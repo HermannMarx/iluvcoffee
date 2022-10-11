@@ -2,6 +2,11 @@ name: Test Code Base
 
 on: push
 
+env:
+  DEFAULT_BRANCH: main
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NODE_VERSION: 16
+
 jobs:
   test:
     name: Test
