@@ -36,8 +36,10 @@ jobs:
           key: npm-${{ env.NODE_VERSION }}-${{ hashFiles('package-lock.json') }}
           restore-keys: npm-${{ env.NODE_VERSION }}-
           run: npm install
-      # - name: Run test pipeline
-      #   run: npm run test
+      - name: Run test pipeline
+        run: npm ci
+        run: npm run build --if-present
+        run: npm test
 # name: Test-Code-Base
 
 # on: push
