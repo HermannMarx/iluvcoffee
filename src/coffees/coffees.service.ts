@@ -29,7 +29,7 @@ export class CoffeesService {
     return coffee.save();
   }
 
-  async update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
+  async update(id: string, updateCoffeeDto: UpdateCoffeeDto) {
     const existingCoffee = await this.coffeeModel
       .findOneAndUpdate({ _id: id }, { $set: updateCoffeeDto }, { new: true })
       .exec();
