@@ -7,11 +7,10 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.push.head.ref }}
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Cache node_modules
@@ -21,6 +20,6 @@ jobs:
           path: ./node_modules
           key: npm-${{ env.NODE_VERSION }}-${{ hashFiles('package-lock.json') }}
           restore-keys: npm-${{ env.NODE_VERSION }}-
-      - run: npm install
+        run: npm install
       - name: Run test pipeline
-      - run: npm run test
+        run: npm run test
