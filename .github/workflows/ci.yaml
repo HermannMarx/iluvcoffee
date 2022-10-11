@@ -11,8 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Cache node_modules
+        id: npm-cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: npm-${{ env.NODE_VERSION }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-${{ env.NODE_VERSION }}-
+          run: npm install
       - name: Run Super-Linter
         run: npm run lint
   test:
