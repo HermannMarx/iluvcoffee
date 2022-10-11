@@ -50,7 +50,7 @@ jobs:
       - name: Run test
         run: npm run test
       - name: Run int test
-        run: npm run int-test
+        run: npm run test-int
   type-check:
     name: Type Check
     runs-on: ubuntu-latest
