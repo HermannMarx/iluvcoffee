@@ -2,7 +2,7 @@ name: Deploy
 
 'on': push
 
-        jobs:
+jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -10,6 +10,6 @@ name: Deploy
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}HEROKU_API_KEY
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: 'nestjs-iluvcoffee' #Must be unique in Heroku
           heroku_email: 'marxhermann@web.de'
