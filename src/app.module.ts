@@ -7,7 +7,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     CoffeesModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/nest-course'),
+    MongooseModule.forRoot(
+      'mongodb+srv://dbUser:secret123@cluster0.lwkjjcf.mongodb.net/?retryWrites=true&w=majority',
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],
