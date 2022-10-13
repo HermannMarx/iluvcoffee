@@ -13,5 +13,11 @@ jobs:
   manual_deploy:
     name: Deploy Manual
     if: contains(github.ref, 'heads') # On branches
-    needs: ['build']
-    uses: HermannMarx/iluvcoffee/.github/workflows/manual-deploy-helper.yaml@main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'nestjs-iluvcoffee' #Must be unique in Heroku
+          heroku_email: 'marxhermann@web.de'
