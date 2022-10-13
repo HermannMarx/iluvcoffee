@@ -14,4 +14,4 @@ jobs:
     name: Deploy Manual
     if: contains(github.ref, 'heads') # On branches
     needs: ['build']
-    uses: HermannMarx/iluvcoffee/.github/workflows/deploy.yaml@main
+    uses: HermannMarx/iluvcoffee/.github/workflows/manual-deploy-helper.yaml@main
