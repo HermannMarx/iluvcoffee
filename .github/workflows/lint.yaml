@@ -1,4 +1,4 @@
-name: Lint Test
+name: Linting
 
 on: push
 
@@ -25,5 +25,5 @@ jobs:
           key: npm-${{ env.NODE_VERSION }}-${{ hashFiles('package-lock.json') }}
           restore-keys: npm-${{ env.NODE_VERSION }}-
           run: npm install
-      - name: Run Super-Linter
+      - name: Lint with ESlint
         run: npm run lint
