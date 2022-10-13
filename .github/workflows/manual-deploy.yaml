@@ -1,0 +1,17 @@
+name: Manual CD
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  manual_deploy:
+    name: Deploy Manual
+    if: contains(github.ref, 'heads') # On branches
+    needs: ['build']
+    uses: HermannMarx/iluvcoffee/.github/workflows/deploy.yaml@main
