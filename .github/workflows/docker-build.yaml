@@ -29,24 +29,24 @@ jobs:
         with:
           ref: ${{ inputs.git_ref }}
 
-      - name: Authenticate to Google Cloud
-        id: auth
-      - uses: google-github-actions/setup-gcloud@master
-      with:
-          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-          project_id: ${{ env.PROJECT_ID }}
-          export_default_credentials: true
+    #   - name: Authenticate to Google Cloud
+    #     id: auth
+    #   - uses: google-github-actions/setup-gcloud@master
+    #   with:
+    #       service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+    #       project_id: ${{ env.PROJECT_ID }}
+    #       export_default_credentials: true
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+    #   - name: Set up Docker Buildx
+    #     uses: docker/setup-buildx-action@v2
 
-      - name: Build and push Docker image
-        id: docker
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: Dockerfile
-          push: true
-    outputs:
-      DOCKER_IMAGE_DIGEST: ${{ steps.docker.outputs.digest }}
-      DOCKER_IMAGE_VERSION: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+    #   - name: Build and push Docker image
+    #     id: docker
+    #     uses: docker/build-push-action@v3
+    #     with:
+    #       context: .
+    #       file: Dockerfile
+    #       push: true
+    # outputs:
+    #   DOCKER_IMAGE_DIGEST: ${{ steps.docker.outputs.digest }}
+    #   DOCKER_IMAGE_VERSION: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
