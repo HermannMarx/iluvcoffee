@@ -37,6 +37,13 @@ jobs:
           export_default_credentials: true
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      - name: Build and push Docker image
+        id: docker
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          push: true
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
