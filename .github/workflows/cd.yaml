@@ -1,14 +1,14 @@
 name: CD
 
 on:
-  pull_request:
-    outputs:
-      DOCKER_IMAGE_DIGEST:
-        description: 'Digest of the pushed docker image.'
-        value: ${{ jobs.build.outputs.DOCKER_IMAGE_DIGEST }}
-      DOCKER_IMAGE_VERSION:
-        description: 'Version label of the pushed docker image.'
-        value: ${{ jobs.build.outputs.DOCKER_IMAGE_VERSION }}
+  pull_request
+  # outputs:
+  #   DOCKER_IMAGE_DIGEST:
+  #     description: 'Digest of the pushed docker image.'
+  #     value: ${{ jobs.build.outputs.DOCKER_IMAGE_DIGEST }}
+  #   DOCKER_IMAGE_VERSION:
+  #     description: 'Version label of the pushed docker image.'
+  #     value: ${{ jobs.build.outputs.DOCKER_IMAGE_VERSION }}
 
 env:
   GCP_SERVICE_ACCOUNT: image-pusher@artifacts-371007.iam.gserviceaccount.com
