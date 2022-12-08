@@ -44,6 +44,9 @@ jobs:
           context: .
           file: Dockerfile
           push: true
+          tags: |-
+            type=match,pattern=.*@(.*),group=1
+            type=sha
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
