@@ -50,7 +50,7 @@ jobs:
 
       - name: Configure Docker Client
         run: |-
-          gcloud auth configure-docker europe-docker.pkg.dev
+          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin europe-docker.pkg.dev
 
       - name: Push Docker Image to Artifact Registry
         env:
