@@ -1,7 +1,6 @@
 ---
 name: Build and Image to Google Cloud Platform
-on:
-  push: pull_request
+on: pull_request
 jobs:
   build-push-gcr:
     name: Build and Push to GCP
