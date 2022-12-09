@@ -43,10 +43,10 @@ jobs:
         env:
           GIT_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
         run: |-
-          docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-          docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-          docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-          docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+          docker tag $IMAGE_NAME:latest eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+          docker tag $IMAGE_NAME:latest eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+          docker push eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+          docker push eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
 
       - name: Configure Docker Client
         run: |-
@@ -59,7 +59,7 @@ jobs:
         env:
           GIT_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
         run: |-
-          docker tag $IMAGE_NAME:latest europe-docker.pkg.dev/$PROJECT_ID/$IMAGE_NAME:latest
-          docker tag $IMAGE_NAME:latest europe-docker.pkg.dev/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-          docker push europe-docker.pkg.dev/$PROJECT_ID/$IMAGE_NAME:latest
-          docker push europe-docker.pkg.dev/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+          docker tag $IMAGE_NAME:latest europe-docker.pkg.dev/$PROJECT_ID/images/$IMAGE_NAME:latest
+          docker tag $IMAGE_NAME:latest europe-docker.pkg.dev/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
+          docker push europe-docker.pkg.dev/$PROJECT_ID/images/$IMAGE_NAME:latest
+          docker push europe-docker.pkg.dev/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
