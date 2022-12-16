@@ -60,3 +60,6 @@ jobs:
           docker tag $IMAGE_NAME:latest europe-west4-docker.pkg.dev/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
           docker push europe-west4-docker.pkg.dev/$PROJECT_ID/images/$IMAGE_NAME:latest
           docker push europe-west4-docker.pkg.dev/$PROJECT_ID/images/$IMAGE_NAME:$GIT_TAG
+      - name: Deploy docker image to GKE
+        run: |-
+          kubectl run iluvcoffee --image=europe-west4-docker.pkg.dev/artifacts-371007/images/iluvcoffee:latest
