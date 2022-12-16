@@ -8,5 +8,5 @@ RUN npm install
 
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 3456
 CMD [ "node", "dist/main" ]
