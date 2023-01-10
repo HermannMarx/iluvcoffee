@@ -1,22 +1,50 @@
-name: CD
+# name: CD
 
-on:
-  push: pull_request
-  workflow_dispatch:
+# on:
+#   pull_request
 
-jobs:
-  build:
-    name: Build
-    # uses: HermannMarx/iluvcoffee/.github/workflows/docker-build.yaml@main
-    # with:
-    #   project: iluvcoffee
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: 'nestjs-iluvcoffee' #Must be unique in Heroku
-          heroku_email: 'marxhermann@web.de'
+# env:
+#   GCP_SERVICE_ACCOUNT: image-pusher@artifacts-371007.iam.gserviceaccount.com
+#   DOCKER_REGISTRY: europe-west4-docker.pkg.dev
+#   DOCKER_IMAGE: europe-west4-docker.pkg.dev/artifacts-371007/iluvcoffee/docker_image
+#   PROJECT_ID: artifacts-371007
+
+# jobs:
+#   build:
+#     name: Docker Build
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       id-token: write
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#         with:
+#           ref: ${{ inputs.git_ref }}
+#       - name: Authenticate to Google Cloud
+#         # id: auth
+#         uses: google-github-actions/setup-gcloud@main
+#         with:
+#           service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           project_id: ${{ env.PROJECT_ID }}
+#           export_default_credentials: true
+#       - name: Set up Docker Buildx
+#         uses: docker/setup-buildx-action@v2
+#       - name: Build and push Docker image
+#         id: docker
+#         uses: docker/build-push-action@v3
+#         with:
+#           context: .
+#           file: Dockerfile
+#           push: true
+#           tags: v1.0.0
+#   deploy:
+#     name: Deploy
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: akhileshns/heroku-deploy@v3.12.12
+#         with:
+#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#           heroku_app_name: 'nestjs-iluvcoffee'
+#           heroku_email: 'marxhermann@web.de'
